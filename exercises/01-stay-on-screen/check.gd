@@ -4,7 +4,7 @@ extends SceneTree
 # Headless runs use a different window size than a real window - that is expected.
 
 func _init():
-	var player = load(ProjectSettings.get_setting("application/run/main_scene")).instantiate()
+	var player = load("res://player/player.tscn").instantiate()
 	root.add_child(player)
 	await process_frame
 	player.set("Speed", 5000.0)
