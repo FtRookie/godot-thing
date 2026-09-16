@@ -12,7 +12,6 @@ public partial class Player : Node2D
 	public override void _Ready()
 	{
 		_sprite = GetNode<Sprite2D>("Sprite2D");
-		base._Ready();
 	}
 
 	public override void _Process(double delta)

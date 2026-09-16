@@ -7,20 +7,23 @@ public partial class EdgeTint : Sprite2D
 {
 	private Node2D _player = null!;
 
-	public EdgeTint()
+	public override void _Ready()
 	{
 		_player = GetParent<Node2D>();
 	}
 
 	public override void _Process(double delta)
 	{
-		Vector2 halfSize = Texture.GetSize() / 2;
+		Vector2 min = Texture.GetSize() / 2;
 		Vector2 windowSize = GetViewportRect().Size;
-		bool touchingEdge = _player.Position.X == halfSize.X || _player.Position.Y == halfSize.Y;
+		Vector2 max = windowSize - min;
+		Vector2 playerPosition = _player.Position;
+		bool touchingEdge =
+			playerPosition.X <= min.X ||
+			playerPosition.Y <= min.Y ||
+			playerPosition.X >= max.X ||
+			playerPosition.Y >= max.Y;
 
-		if (touchingEdge)
-		{
-			Modulate = Color.Red;
-		}
+		Modulate = touchingEdge ? Colors.Red : Colors.White;
 	}
 }
