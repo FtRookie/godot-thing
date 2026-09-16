@@ -1,0 +1,7 @@
+{
+	"recommendations": [
+		"ms-dotnettools.csharp",
+		"neikeq.godot-csharp-vscode",
+		"editorconfig.editorconfig"
+	]
+}

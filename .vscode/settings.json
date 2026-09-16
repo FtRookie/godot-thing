@@ -1,0 +1,34 @@
+{
+	// Format on save. For .cs the Roslyn server reads .editorconfig, so saving applies the same
+	// tabs/width/style rules that `dotnet format --verify-no-changes` checks in the build.
+	"editor.formatOnSave": true,
+	"[csharp]": {
+		"editor.defaultFormatter": "ms-dotnettools.csharp",
+		"editor.formatOnSave": true
+	},
+
+	// Strips unused usings on save, matching the IDE0005 rule the build enforces.
+	"dotnet.formatting.organizeImportsOnFormat": true,
+
+	// Defaults are "openFiles", so warnings appear only in files you happen to have open.
+	// "fullSolution" puts every CA/IDE/CS diagnostic in the Problems panel - this is the
+	// setting that makes the analyzers behave like a linter rather than a hover tooltip.
+	"dotnet.backgroundAnalysis.analyzerDiagnosticsScope": "fullSolution",
+	"dotnet.backgroundAnalysis.compilerDiagnosticsScope": "fullSolution",
+
+	// Analyzer "information" diagnostics render as faint ellipses otherwise, easy to miss.
+	"dotnet.diagnostics.reportInformationAsHint": false,
+
+	// .editorconfig covers .cs via Roslyn; these extend the same rules to every other file type,
+	// since VS Code does not read .editorconfig on its own.
+	"files.trimTrailingWhitespace": true,
+	"files.insertFinalNewline": true,
+	"files.eol": "\n",
+
+	// Build output and the import cache are noise in search and the file tree.
+	"files.exclude": {
+		"**/.godot": true,
+		"**/obj": true,
+		"**/bin": true
+	}
+}

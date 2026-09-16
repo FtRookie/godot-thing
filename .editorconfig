@@ -2,3 +2,30 @@ root = true
 
 [*]
 charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = tab
+indent_size = 4
+
+[*.{yml,yaml,json,md}]
+indent_style = space
+indent_size = 2
+
+[*.cs]
+max_line_length = 120
+
+# C# convention runs opposite to eslint's "no-public": explicit modifiers are the norm here.
+dotnet_style_require_accessibility_modifiers = for_non_interface_members:warning
+csharp_style_namespace_declarations = file_scoped:warning
+csharp_using_directive_placement = outside_namespace:warning
+dotnet_sort_system_directives_first = true
+csharp_prefer_braces = true:warning
+dotnet_style_prefer_auto_properties = true:warning
+csharp_style_var_for_built_in_types = false:suggestion
+
+# unused-imports/no-unused-imports
+dotnet_diagnostic.IDE0005.severity = warning
+
+# Godot exports members by design; CA1051 fights [Export] on public members.
+dotnet_diagnostic.CA1051.severity = none
