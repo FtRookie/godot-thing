@@ -1,0 +1,18 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			// Starts the game with the C# debugger attached, so breakpoints in .cs files pause it.
+			// GODOT4 is a user environment variable holding the Godot .exe path, which keeps a
+			// machine-specific path out of the repo.
+			"name": "Play",
+			"type": "coreclr",
+			"request": "launch",
+			"preLaunchTask": "build",
+			"program": "${env:GODOT4}",
+			"args": [],
+			"cwd": "${workspaceFolder}",
+			"stopAtEntry": false
+		}
+	]
+}

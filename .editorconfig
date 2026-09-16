@@ -29,3 +29,78 @@ dotnet_diagnostic.IDE0005.severity = warning
 
 # Godot exports members by design; CA1051 fights [Export] on public members.
 dotnet_diagnostic.CA1051.severity = none
+
+# Naming conventions (IDE1006), following Microsoft's C# identifier guide:
+# https://learn.microsoft.com/dotnet/csharp/fundamentals/coding-style/identifier-names
+# Namespaces are deliberately not covered: this project uses lowercase folder names (GodotThing.player).
+dotnet_diagnostic.IDE1006.severity = warning
+
+# Styles
+dotnet_naming_style.pascal_case.capitalization = pascal_case
+
+dotnet_naming_style.camel_case.capitalization = camel_case
+
+dotnet_naming_style.underscore_camel_case.capitalization = camel_case
+dotnet_naming_style.underscore_camel_case.required_prefix = _
+
+dotnet_naming_style.s_camel_case.capitalization = camel_case
+dotnet_naming_style.s_camel_case.required_prefix = s_
+
+dotnet_naming_style.i_pascal_case.capitalization = pascal_case
+dotnet_naming_style.i_pascal_case.required_prefix = I
+
+dotnet_naming_style.t_pascal_case.capitalization = pascal_case
+dotnet_naming_style.t_pascal_case.required_prefix = T
+
+# Interfaces: IPascalCase
+dotnet_naming_symbols.interfaces.applicable_kinds = interface
+dotnet_naming_rule.interfaces.symbols = interfaces
+dotnet_naming_rule.interfaces.style = i_pascal_case
+dotnet_naming_rule.interfaces.severity = warning
+
+# Generic type parameters: TPascalCase
+dotnet_naming_symbols.type_parameters.applicable_kinds = type_parameter
+dotnet_naming_rule.type_parameters.symbols = type_parameters
+dotnet_naming_rule.type_parameters.style = t_pascal_case
+dotnet_naming_rule.type_parameters.severity = warning
+
+# Types and members: PascalCase
+dotnet_naming_symbols.types_and_members.applicable_kinds = class, struct, enum, delegate, method, property, event, local_function
+dotnet_naming_rule.types_and_members.symbols = types_and_members
+dotnet_naming_rule.types_and_members.style = pascal_case
+dotnet_naming_rule.types_and_members.severity = warning
+
+# Constants, fields and locals alike: PascalCase
+dotnet_naming_symbols.constants.applicable_kinds = field, local
+dotnet_naming_symbols.constants.required_modifiers = const
+dotnet_naming_rule.constants.symbols = constants
+dotnet_naming_rule.constants.style = pascal_case
+dotnet_naming_rule.constants.severity = warning
+
+# Private/internal static fields: s_camelCase
+dotnet_naming_symbols.private_static_fields.applicable_kinds = field
+dotnet_naming_symbols.private_static_fields.applicable_accessibilities = private, internal, private_protected
+dotnet_naming_symbols.private_static_fields.required_modifiers = static
+dotnet_naming_rule.private_static_fields.symbols = private_static_fields
+dotnet_naming_rule.private_static_fields.style = s_camel_case
+dotnet_naming_rule.private_static_fields.severity = warning
+
+# Private/internal instance fields: _camelCase
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private, internal, private_protected
+dotnet_naming_rule.private_fields.symbols = private_fields
+dotnet_naming_rule.private_fields.style = underscore_camel_case
+dotnet_naming_rule.private_fields.severity = warning
+
+# Public/protected fields: PascalCase
+dotnet_naming_symbols.public_fields.applicable_kinds = field
+dotnet_naming_symbols.public_fields.applicable_accessibilities = public, protected, protected_internal
+dotnet_naming_rule.public_fields.symbols = public_fields
+dotnet_naming_rule.public_fields.style = pascal_case
+dotnet_naming_rule.public_fields.severity = warning
+
+# Locals and parameters: camelCase
+dotnet_naming_symbols.locals_and_parameters.applicable_kinds = local, parameter
+dotnet_naming_rule.locals_and_parameters.symbols = locals_and_parameters
+dotnet_naming_rule.locals_and_parameters.style = camel_case
+dotnet_naming_rule.locals_and_parameters.severity = warning

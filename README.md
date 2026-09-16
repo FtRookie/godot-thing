@@ -29,12 +29,23 @@ godot --path .
 
 Opening the folder prompts you to install the recommended extensions from `.vscode/extensions.json`:
 
-- **C#** (`ms-dotnettools.csharp`) — language server, formatting, analyzers
-- **godot-csharp-vscode** (`neikeq.godot-csharp-vscode`) — Godot integration for C#
+- **C#** (`ms-dotnettools.csharp`) — language server, formatting, analyzers, and the debugger F5 uses
 - **EditorConfig** (`editorconfig.editorconfig`) — applies `.editorconfig` to non-C# files
 
 The workspace settings format and organize usings on save, and report analyzer warnings for the whole project in
 the Problems panel rather than only for open files.
+
+### Running and debugging from VS Code
+
+Press **F5** to build and start the game with the C# debugger attached; breakpoints in `.cs` files pause it. The launch
+configuration finds Godot through a `GODOT4` environment variable, so set it once to the path of your Godot `.exe`
+(PowerShell):
+
+```powershell
+[Environment]::SetEnvironmentVariable("GODOT4", "C:\path\to\Godot_v4.7.2-stable_mono_win64.exe", "User")
+```
+
+Then close every VS Code window and reopen it — VS Code reads environment variables only when it starts.
 
 ## Checking your changes
 
@@ -50,11 +61,14 @@ Run `dotnet format godot-thing.sln` without `--verify-no-changes` to apply fixes
 ## Code style
 
 Style lives in `.editorconfig`: tabs, 120-column lines, LF endings, file-scoped namespaces, explicit access
-modifiers. A few Godot-specific points:
+modifiers. Naming follows Microsoft's C# conventions and is checked by the build (`IDE1006`): `PascalCase` types
+and members, `camelCase` locals and parameters, `_camelCase` private fields, `s_camelCase` private static fields. A few Godot-specific points:
 
 - Scripts are `partial` classes, and the file name must match the class name exactly — Godot finds the script's
   class by that name.
 - Fields assigned in `_Ready` rather than a constructor are declared `= null!`, since the engine, not the
   constructor, initializes them.
 - Inspector-editable values use `[Export]` on a public property.
+- Namespaces are `GodotThing.<folder>` with the folder's lowercase name, e.g. `player/Player.cs` is in
+  `GodotThing.player`. A capitalised `GodotThing.Player` would collide with the `Player` class.
 - Scene files (`*.tscn`) are edited in the Godot editor, not by hand.
